@@ -1,0 +1,51 @@
+<?php
+
+abstract class Konto {
+    protected string $wlasciciel;
+    protected string $numerKonta;
+    protected float $saldo;
+    
+    public function __construct(string $numerKonta, float $saldo, string $wlasciciel) {
+        $this->numerKonta = $numerKonta;
+        $this->saldo = $saldo;
+        $this->wlasciciel = $wlasciciel;
+    }
+
+    public function numerKonta() {
+        return $this->numerKonta;
+    }
+
+    public function saldo() {
+        return $this->saldo;
+    }
+
+    public function wlasciciel() {
+        return $this->wlasciciel;
+    }
+
+    public function daneKonta() {
+        return "Właściciel: " . $this->wlasciciel . ", Numer konta: " . $this->numerKonta . ", Saldo: " . $this->saldo . " zł";
+    }
+
+    public function wplata($kwota) {
+        if ($kwota > 0) {
+            $this->saldo += $kwota;
+            echo "Numer konta: " . $this->numerKonta . ", Wpłacono: " . $kwota . " zł. Nowe saldo: " . $this->saldo . " zł.\n";
+        } else {
+            echo "Kwota wpłaty musi być większa od zera.\n";
+        }
+    }
+
+    public function wyplata($kwota) {
+        if ($kwota > 0 && $kwota <= $this->saldo) {
+            $this->saldo -= $kwota;
+            echo "Numer konta: " . $this->numerKonta . ", Wypłacono: " . $kwota . " zł. Nowe saldo: " . $this->saldo . " zł.\n";
+        } else {
+            echo "Nie można wypłacić tej kwoty. Sprawdź saldo lub wprowadź poprawną kwotę.\n";
+        }
+    }
+}
+
+class KontoOsobiste extends Konto {
+
+}
