@@ -27,7 +27,7 @@ abstract class Konto {
         return "Właściciel: " . $this->wlasciciel . ", Numer konta: " . $this->numerKonta . ", Saldo: " . $this->saldo . " zł";
     }
 
-    public function wplata($kwota) {
+    public function wplata(float $kwota) {
         if ($kwota > 0) {
             $this->saldo += $kwota;
             echo "Numer konta: " . $this->numerKonta . ", Wpłacono: " . $kwota . " zł. Nowe saldo: " . $this->saldo . " zł.\n";
@@ -36,7 +36,7 @@ abstract class Konto {
         }
     }
 
-    public function wyplata($kwota) {
+    public function wyplata(float $kwota) {
         if ($kwota > 0 && $kwota <= $this->saldo) {
             $this->saldo -= $kwota;
             echo "Numer konta: " . $this->numerKonta . ", Wypłacono: " . $kwota . " zł. Nowe saldo: " . $this->saldo . " zł.\n";
