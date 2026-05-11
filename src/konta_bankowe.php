@@ -68,7 +68,7 @@ class KontoFirmowe extends Konto {
         $this->debet = $debet;
     }
 
-    public function wyplata($kwota) {
+    public function wyplata(float $kwota) {
         if ($kwota > 0 && $kwota <= ($this->saldo + $this->debet)) {
             $this->saldo -= $kwota;
             echo "Numer konta: " . $this->numerKonta . ", Wypłacono: " . $kwota . " zł. Nowe saldo: " . $this->saldo . " zł.\n";
