@@ -22,6 +22,12 @@
     echo"\nPrzelew z konta firmowego na konto osobiste:\n";
     $konto_firmowe->przelew($konto_osobiste, 600.00);
 
+    echo "\nZałożenie konta oszczędnościowego:\n";
+    $konto_oszczednosciowe = new KontoOszczednosciowe("1122334455", 5000.00, "Anna Nowak", 2.5);
+    echo $konto_oszczednosciowe->daneKonta() . "\n";
+    $konto_oszczednosciowe->naliczOprocentowanie();
+
     echo "\nStan kont:\n";
     echo $konto_osobiste->daneKonta() . "\n";
     echo $konto_firmowe->daneKonta() . "\n";
+    echo $konto_oszczednosciowe->daneKonta() . "\n";

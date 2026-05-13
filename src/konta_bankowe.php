@@ -87,3 +87,18 @@ class KontoFirmowe extends Konto {
         }
     }
 }
+
+class KontoOszczednosciowe extends Konto {
+    private float $oprocentowanie;
+
+    public function __construct(string $numerKonta, float $saldo, string $wlasciciel, float $oprocentowanie) {
+        parent::__construct($numerKonta, $saldo, $wlasciciel);
+        $this->oprocentowanie = $oprocentowanie;
+    }
+
+    public function naliczOprocentowanie() {
+        $odsetki = $this->saldo * ($this->oprocentowanie / 100);
+        $this->saldo += $odsetki;
+        echo "Oprocentowanie: " . $this->oprocentowanie . "%. Naliczono odsetki: " . $odsetki . " zł. Nowe saldo: " . $this->saldo . " zł.\n";
+    }
+}
